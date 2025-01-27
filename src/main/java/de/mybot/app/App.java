@@ -1,10 +1,10 @@
 package de.mybot.app;
 
-/**
- * Hello world!
- */
+import de.mybot.app.service.ChatService;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ChatService chatService = new ChatService();
+        chatService.startChat();
     }
 }
