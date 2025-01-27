@@ -9,10 +9,16 @@ public class ChatService {
     private final GeneralService generalService = new GeneralService();
     //private final TicketService ticketService = new TicketService();
 
+    private int customerId = 0;
+
     public void startChat() {
         final Scanner scanner = new Scanner(System.in);
 
         System.out.println("Willkommen zum Support-Chatbot JAVANATHAN!");
+        //TODO: Kundennummer
+        System.out.println("Geben Sie ihre Kundennummer an oder ich töte Sie");
+        customerId = scanner.nextInt();
+
         System.out.println("Um welches Produkt handelt es sicht?");
 
         for (Product product : productService.getProducts()) {
@@ -43,7 +49,8 @@ public class ChatService {
         } else {
             System.out.println("Ungültige Eingabe");
         }
-        //allgemeine Dinge die für alles gelten
+        //allgemeine Dinge die für alles gelten, hier Feedback
+    
     }
 }
 
