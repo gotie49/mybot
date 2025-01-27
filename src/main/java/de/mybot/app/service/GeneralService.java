@@ -11,15 +11,23 @@ public class GeneralService {
                     new Issue(4, "Ersatzteile/Bestellung"),
                     new Issue(5, "Direktes Weiterleiten an Service-Mitarbeiter"));
 
-    public void displayGeneralIssues() {
-    }
-
-    public String getIssueByChoice(int issueChoice) {
+    public Issue getIssueByChoice(int issueChoice) {
+        for (Issue issue : generalIssues) {
+            if (issue.getId() == issueChoice) {
+                return issue;
+            }
+        }
         return null;
     }
 
+    public void displayGeneralIssues() {
+        for (Issue issue : generalIssues) {
+            System.out.println(issue.getId() + ". " + issue.getDescription());
+        }
+    }
+
     public void provideHelp(Issue generalIssue) {
-        System.out.println("Hilfe!!! für" + generalIssue.toString());
+        System.out.println("Hilfe!!! für" + generalIssue.getDescription());
         switch (generalIssue.getId()) {
             case 1:
                 System.out.println("Hilfsanleitung für Issue1");

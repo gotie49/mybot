@@ -1,6 +1,8 @@
 package de.mybot.app.service;
 
 import java.util.Scanner;
+import de.mybot.app.data.Issue;
+import de.mybot.app.data.Product;
 
 public class ChatService {
     private final ProductService productService = new ProductService();
@@ -8,60 +10,40 @@ public class ChatService {
     //private final TicketService ticketService = new TicketService();
 
     public void startChat() {
+        final Scanner scanner = new Scanner(System.in);
+
         System.out.println("Willkommen zum Support-Chatbot JAVANATHAN!");
-        System.out.println("Bitte wählen Sie ein Produkt aus:");
-        System.out.println("1. Cleanbug\n2. Windowfly\n3. Gardenbeetle");
+        System.out.println("Um welches Produkt handelt es sicht?");
 
-        Scanner scanner = new Scanner(System.in);
-        int productChoice = scanner.nextInt();
-
-        String product = productService.getProductNameByChoice(productChoice);
-
-        if (product != null) {
-            System.out.println("Welche Art von Problem haben Sie?");
-            System.out.println("1. produktspezifisch\n2. allgemein");
-            int problemChoice = scanner.nextInt();
-            String problemKind = getProblemByChoice(problemChoice);
-
-            if (problemKind == "general") {
-                generalService.displayGeneralIssues();
-                int issueChoice = scanner.nextInt();
-
-                String issue = generalService.getIssueByChoice(issueChoice);
-                if (issue != null) {
-                    System.out.println("Problem: " + issue);
-
-                }
-            } else if (problemKind == "specific") {
-                System.out.println("Bitte wählen Sie das Problem aus:");
-                productService.displayProductIssues(product);
-                int issueChoice = scanner.nextInt();
-
-                String issue = productService.getIssueByChoice(product, issueChoice);
-                if (issue != null) {
-                    System.out.println("Problem: " + issue);
-                    productService.provideHelp(product, issue);
-
-                    System.out.println("Problem gelöst? (JA/NEIN)");
-                    String solved = scanner.next().toLowerCase();
-
-                    //ticketService.createTicket(product, issue, solved.equals("nein"));
-                } else {
-                    System.out.println("Ungültige Eingabe. Starten Sie neu.");
-                }
-            }
-        } else {
-            System.out.println("Ungültige Eingabe. Starten Sie neu.");
+        for (Product product : productService.getProducts()) {
+            System.out.println(product.getId() + ". " + product.getName());
         }
-    }
+        int productChoice = scanner.nextInt();
+        Product selectedProduct = productService.getProductByChoice(productChoice);
 
-    private String getProblemByChoice(int choice) {
-        return switch (choice) {
-            case 1 -> "specific";
-            case 2 -> "general";
-            default -> null;
-        };
+        System.out.println("Um welche Art von Problem handelt es sicht?");
+        System.out.println("1. allgemein");
+        System.out.println("2. produktspezifisch");
 
+        int problemChoice = scanner.nextInt();
+        if (problemChoice == 1) {
+            generalService.displayGeneralIssues();
+
+            int issueChoice = scanner.nextInt();
+            Issue generalIssue = generalService.getIssueByChoice(issueChoice);
+
+            generalService.provideHelp(generalIssue);
+        } else if (problemChoice == 2) {
+            productService.displayProductIssues(selectedProduct);
+
+            int issueChoice = scanner.nextInt();
+            Issue productIssue = productService.getIssueByChoice(selectedProduct, issueChoice);
+
+            productService.provideHelp(selectedProduct, productIssue);
+        } else {
+            System.out.println("Ungültige Eingabe");
+        }
+        //allgemeine Dinge die für alles gelten
     }
 }
 
