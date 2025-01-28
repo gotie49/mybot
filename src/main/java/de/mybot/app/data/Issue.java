@@ -4,6 +4,7 @@ public class Issue {
     private int id;
     private String description;
 
+    //TODO: vermutlich brauchen wir hier als Eigenschaft die Hilfsanleitung
     public Issue(int id, String description) {
         this.id = id;
         this.description = description;

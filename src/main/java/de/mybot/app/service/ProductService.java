@@ -1,33 +1,43 @@
 package de.mybot.app.service;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import de.mybot.app.data.Issue;
 import de.mybot.app.data.Product;
 
 public class ProductService {
-    /*private final Map<String, List<String>> productIssues = Map.of(
-            "Cleanbug", List.of("Absturz bei Hindernissen", "Gerät startet nicht", "Reinigung nicht effektiv"),
-            "Windowfly", List.of("Gerät bleibt am Fenster haften", "Gerät rutscht ab", "Gerät startet nicht"),
-            "Gardenbeetle", List.of("Gerät bleibt stecken", "Gerät mäht nicht richtig", "Gerät startet nicht")
-    );*/
-    private final LinkedHashMap<Product, List<Issue>> productIssues = new LinkedHashMap<>();
-    ArrayList<Product> productList = new ArrayList<>(productIssues.keySet());
+    private final ArrayList<Product> products = new ArrayList<>();
 
     public ProductService() {
-        productIssues.put(new Product(1, "Cleanbug"), List.of(new Issue(1, "Absturz bei Hindernissen")));
-        productIssues.put(new Product(2, "Windowfly"), List.of(new Issue(1, "Absturz bei Hindernissen")));
-        productIssues.put(new Product(3, "Gardenbeetle"), List.of(new Issue(1, "Absturz bei Hindernissen")));
+        ArrayList<Issue> cleanbugIssues = new ArrayList<>();
+        cleanbugIssues.add(new Issue(1, "Absturz bei Hindernissen"));
+        cleanbugIssues.add(new Issue(2, "Gerät startet nicht"));
+        cleanbugIssues.add(new Issue(3, "Reinigung nicht effektiv"));
+
+        ArrayList<Issue> windowflyIssues = new ArrayList<>();
+        windowflyIssues.add(new Issue(1, "Absturz bei Hindernissen"));
+        windowflyIssues.add(new Issue(2, "Gerät startet nicht"));
+        windowflyIssues.add(new Issue(3, "Reinigung nicht effektiv"));
+
+        ArrayList<Issue> gardenbeetleIssues = new ArrayList<>();
+        gardenbeetleIssues.add(new Issue(1, "Absturz bei Hindernissen"));
+        gardenbeetleIssues.add(new Issue(2, "Gerät startet nicht"));
+        gardenbeetleIssues.add(new Issue(3, "Reinigung nicht effektiv"));
+
+        Product cleanbug = new Product(1, "Cleanbug", cleanbugIssues);
+        Product windowfly = new Product(2, "Windowfly", windowflyIssues);
+        Product gardenbeetle = new Product(3, "Gardenbeetle", gardenbeetleIssues);
+        products.add(cleanbug);
+        products.add(windowfly);
+        products.add(gardenbeetle);
     }
 
     public List<Product> getProducts() {
-        return new ArrayList<>(productIssues.keySet());
+        return products;
     }
 
-
     public Product getProductByChoice(int productChoice) {
-        for (Product product : productList) {
+        for (Product product : products) {
             if (product.getId() == productChoice)
                 return product;
         }
@@ -35,7 +45,7 @@ public class ProductService {
     }
 
     public Issue getIssueByChoice(Product selectedProduct, int issueChoice) {
-        List<Issue> issueList = productIssues.get(selectedProduct);
+        List<Issue> issueList = selectedProduct.getProductIssues();
         for (Issue issue : issueList) {
             if (issue.getId() == issueChoice) {
                 return issue;
@@ -45,7 +55,7 @@ public class ProductService {
     }
 
     public void displayProductIssues(Product product) {
-        List<Issue> issueList = productIssues.get(product);
+        List<Issue> issueList = product.getProductIssues();
         for (Issue issue : issueList) {
             System.out.println(issue.getId() + ". " + issue.getDescription());
         }

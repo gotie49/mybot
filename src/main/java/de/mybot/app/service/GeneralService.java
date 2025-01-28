@@ -1,18 +1,22 @@
 package de.mybot.app.service;
 
-import java.util.List;
+import java.util.ArrayList;
 import de.mybot.app.data.Issue;
 
 public class GeneralService {
-    private final List<Issue> generalIssues =
-            List.of(new Issue(1, "Verbindungsprobleme"),
-                    new Issue(2, "App-/Softwarefehler"),
-                    new Issue(3, "Einrichtung/Erstinstallation"),
-                    new Issue(4, "Ersatzteile/Bestellung"),
-                    new Issue(5, "Direktes Weiterleiten an Service-Mitarbeiter"));
+
+    private ArrayList<Issue> issues = new ArrayList<>();
+
+    public GeneralService() {
+        issues.add(new Issue(1, "Verbindungsprobleme"));
+        issues.add(new Issue(2, "App-/Softwarefehler"));
+        issues.add(new Issue(3, "Einrichtung/Erstinstallation"));
+        issues.add(new Issue(4, "Ersatzteile/Bestellung"));
+        issues.add(new Issue(5, "Direktes Weiterleiten an Service-Mitarbeiter"));
+    }
 
     public Issue getIssueByChoice(int issueChoice) {
-        for (Issue issue : generalIssues) {
+        for (Issue issue : issues) {
             if (issue.getId() == issueChoice) {
                 return issue;
             }
@@ -21,7 +25,7 @@ public class GeneralService {
     }
 
     public void displayGeneralIssues() {
-        for (Issue issue : generalIssues) {
+        for (Issue issue : issues) {
             System.out.println(issue.getId() + ". " + issue.getDescription());
         }
     }
