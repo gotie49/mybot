@@ -7,7 +7,6 @@ public class App {
         ChatService chatService = new ChatService();
         chatService.startChat();
 
-        //TODO: möglicherweise Issues als Eigenschaft der Produkt Klasse, so dass List<Products> products bereits die 
-        // Issues beinhaltet,  
+        /* TODO: mvn exec plugin, separate logic from chatservice into individual classes, write hilfsanleitung, write feedback, ticket logic, ticket saves*/
     }
 }

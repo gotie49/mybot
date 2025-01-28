@@ -1,6 +1,7 @@
 package de.mybot.app.service;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import de.mybot.app.data.Issue;
 
 public class GeneralService {
@@ -15,13 +16,15 @@ public class GeneralService {
         issues.add(new Issue(5, "Direktes Weiterleiten an Service-Mitarbeiter"));
     }
 
-    public Issue getIssueByChoice(int issueChoice) {
-        for (Issue issue : issues) {
-            if (issue.getId() == issueChoice) {
-                return issue;
-            }
-        }
-        return null;
+    public void run() {
+        Scanner scanner = new Scanner(System.in);
+
+        displayGeneralIssues();
+        int issueChoice = scanner.nextInt();
+        Issue generalIssue = getIssueByChoice(issueChoice);
+        generalIssue.provideHelp();
+
+        scanner.close();
     }
 
     public void displayGeneralIssues() {
@@ -30,28 +33,12 @@ public class GeneralService {
         }
     }
 
-    public void provideHelp(Issue generalIssue) {
-        System.out.println("Hilfe!!! für" + generalIssue.getDescription());
-        switch (generalIssue.getId()) {
-            case 1:
-                System.out.println("Hilfsanleitung für Issue1");
-                break;
-            case 2:
-                System.out.println("Hilfsanleitung für Issue2");
-                break;
-            case 3:
-                System.out.println("Hilfsanleitung für Issue3");
-                break;
-            case 4:
-                System.out.println("Hilfsanleitung für Issue4");
-                break;
-            case 5:
-                System.out.println("Hilfsanleitung für Issue5");
-                break;
-            default:
-                System.out.println("Kein gültiges Issue");
-                break;
+    public Issue getIssueByChoice(int issueChoice) {
+        for (Issue issue : issues) {
+            if (issue.getId() == issueChoice) {
+                return issue;
+            }
         }
-        //Issue unspezifische Hinweise die immer im Anschluss folgen sollen
+        return null;
     }
 }

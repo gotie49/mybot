@@ -18,5 +18,9 @@ public class Issue {
         return description;
     }
 
+    public void provideHelp() {
+        System.out.println("Hier steht die Hilfsanleitung");
+    }
+
 
 }

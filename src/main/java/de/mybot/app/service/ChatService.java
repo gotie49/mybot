@@ -15,7 +15,7 @@ public class ChatService {
         final Scanner scanner = new Scanner(System.in);
 
         System.out.println("Willkommen zum Support-Chatbot JAVANATHAN!");
-        //TODO: Kundennummer
+        //TODO: Kundennummer, move this to end of program
         System.out.println("Geben Sie ihre Kundennummer an oder ich töte Sie");
         customerId = scanner.nextInt();
 
@@ -33,12 +33,13 @@ public class ChatService {
 
         int problemChoice = scanner.nextInt();
         if (problemChoice == 1) {
-            generalService.displayGeneralIssues();
+            generalService.run();
+            /*generalService.displayGeneralIssues();
 
             int issueChoice = scanner.nextInt();
             Issue generalIssue = generalService.getIssueByChoice(issueChoice);
 
-            generalService.provideHelp(generalIssue);
+            generalService.provideHelp(generalIssue); */
         } else if (problemChoice == 2) {
             productService.displayProductIssues(selectedProduct);
 
@@ -50,7 +51,7 @@ public class ChatService {
             System.out.println("Ungültige Eingabe");
         }
         //allgemeine Dinge die für alles gelten, hier Feedback
-    
+
     }
 }
 
