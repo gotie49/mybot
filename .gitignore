@@ -2,7 +2,7 @@
 
 # Target folder where Maven stores compiled files and build artifacts
 /target/
-
+/tickets/
 # Maven build logs
 mvnw.log
 

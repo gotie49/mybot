@@ -42,4 +42,8 @@ public class Ticket {
     public String getStatus() {
         return status;
     }
+
+    public String getCostumerID() {
+        return costumerID;
+    }
 }
