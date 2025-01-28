@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import de.mybot.app.data.Issue;
 import de.mybot.app.data.Product;
+import de.mybot.app.data.Ticket;
+import de.mybot.app.utils.UIEngine;
 
 public class ProductService {
     private final ArrayList<Product> products = new ArrayList<>();
+    private Product selectedProduct;
+    private Ticket ticket = Ticket.getInstance();
 
     public ProductService() {
         ArrayList<Issue> cleanbugIssues = new ArrayList<>();
@@ -24,12 +28,58 @@ public class ProductService {
         gardenbeetleIssues.add(new Issue(2, "Gerät startet nicht"));
         gardenbeetleIssues.add(new Issue(3, "Reinigung nicht effektiv"));
 
-        Product cleanbug = new Product(1, "Cleanbug", cleanbugIssues);
-        Product windowfly = new Product(2, "Windowfly", windowflyIssues);
-        Product gardenbeetle = new Product(3, "Gardenbeetle", gardenbeetleIssues);
+        ArrayList<String> cleanbugSpareparts = new ArrayList<>();
+        cleanbugSpareparts.add("Getriebe");
+        cleanbugSpareparts.add("Dichtung");
+        cleanbugSpareparts.add("Akku");
+
+        ArrayList<String> windowflySpareparts = new ArrayList<>();
+        windowflySpareparts.add("Getriebe");
+        windowflySpareparts.add("Dichtung");
+        windowflySpareparts.add("Akku");
+
+        ArrayList<String> gardenbeetleSpareparts = new ArrayList<>();
+        gardenbeetleSpareparts.add("Getriebe");
+        gardenbeetleSpareparts.add("Dichtung");
+        gardenbeetleSpareparts.add("Akku");
+
+
+        Product cleanbug = new Product(1, "Cleanbug", cleanbugIssues, cleanbugSpareparts);
+        Product windowfly = new Product(2, "Windowfly", windowflyIssues, windowflySpareparts);
+        Product gardenbeetle = new Product(3, "Gardenbeetle", gardenbeetleIssues, gardenbeetleSpareparts);
+
         products.add(cleanbug);
         products.add(windowfly);
         products.add(gardenbeetle);
+    }
+
+    public void run(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
+        ticket.setProblemType("Produktspezifisch");
+
+        UIEngine.clear();
+        UIEngine uiManager = new UIEngine("Produktspezifische Probleme für " + selectedProduct.getName());
+
+        ArrayList<String> issueOptions = new ArrayList<>();
+        for (Issue issue : selectedProduct.getProductIssues()) {
+            issueOptions.add(issue.getDescription());
+        }
+
+        uiManager.drawMenu(issueOptions);
+        int issueChoice = UIEngine.getMenuInput(issueOptions.size());
+
+        Issue productIssue = getIssueByChoice(issueChoice);
+        productIssue.provideHelp();
+
+        ticket.setIssue(productIssue.getDescription());
+    }
+
+    private Issue getIssueByChoice(int issueChoice) {
+        List<Issue> issueList = selectedProduct.getProductIssues();
+        for (Issue issue : issueList) {
+            if (issue.getId() == issueChoice) return issue;
+        }
+        return null;
     }
 
     public List<Product> getProducts() {
@@ -42,38 +92,5 @@ public class ProductService {
                 return product;
         }
         return null;
-    }
-
-    public Issue getIssueByChoice(Product selectedProduct, int issueChoice) {
-        List<Issue> issueList = selectedProduct.getProductIssues();
-        for (Issue issue : issueList) {
-            if (issue.getId() == issueChoice) {
-                return issue;
-            }
-        }
-        return null;
-    }
-
-    public void displayProductIssues(Product product) {
-        List<Issue> issueList = product.getProductIssues();
-        for (Issue issue : issueList) {
-            System.out.println(issue.getId() + ". " + issue.getDescription());
-        }
-    }
-
-    public void provideHelp(Product product, Issue productIssue) {
-        switch (product.getId()) {
-            case 1:
-                provideHelpWindowfly(productIssue);
-                break;
-        }
-    }
-
-    private void provideHelpWindowfly(Issue productIssue) {
-        switch (productIssue.getId()) {
-            case 1:
-                System.out.println("your mom");
-                break;
-        }
     }
 }

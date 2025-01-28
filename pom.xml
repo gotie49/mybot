@@ -43,7 +43,7 @@
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
-      <version>20241224</version>
+      <version>20231013</version>
     </dependency>
   </dependencies>
 
@@ -88,6 +88,14 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.6.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>3.0.0</version> <!-- Use the latest version -->
+          <configuration>
+            <mainClass>de.mybot.app.App</mainClass> <!-- Replace with your main class -->
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>

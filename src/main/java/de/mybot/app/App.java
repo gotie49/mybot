@@ -6,7 +6,7 @@ public class App {
     public static void main(String[] args) {
         ChatService chatService = new ChatService();
         chatService.startChat();
-
-        /* TODO: mvn exec plugin, separate logic from chatservice into individual classes, write hilfsanleitung, write feedback, ticket logic, ticket saves*/
+        /* TODO: clear() anpassen (Eingabe erwarten), Hilfsanleitungen schreiben, Bug testen, Chatanweisungen überarbeiten/überprüfen, Zurück Option , 
+            Unnütze Tests schreiben, Pseudo Code, Manual, Aktivitätsdiagramm*/
     }
 }

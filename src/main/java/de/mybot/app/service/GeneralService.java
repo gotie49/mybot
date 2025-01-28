@@ -1,12 +1,13 @@
 package de.mybot.app.service;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import de.mybot.app.data.Issue;
+import de.mybot.app.data.Ticket;
+import de.mybot.app.utils.UIEngine;
 
 public class GeneralService {
-
-    private ArrayList<Issue> issues = new ArrayList<>();
+    private final ArrayList<Issue> issues = new ArrayList<>();
+    Ticket ticket = Ticket.getInstance();
 
     public GeneralService() {
         issues.add(new Issue(1, "Verbindungsprobleme"));
@@ -17,27 +18,28 @@ public class GeneralService {
     }
 
     public void run() {
-        Scanner scanner = new Scanner(System.in);
+        ticket.setProblemType("Allgemein");
 
-        displayGeneralIssues();
-        int issueChoice = scanner.nextInt();
+        UIEngine.clear();
+        UIEngine uiManager = new UIEngine("Allgemeine Probleme");
+
+        ArrayList<String> generalOptions = new ArrayList<>();
+        for (Issue issue : issues) {
+            generalOptions.add(issue.getDescription());
+        }
+
+        uiManager.drawMenu(generalOptions);
+        int issueChoice = UIEngine.getMenuInput(generalOptions.size());
+
         Issue generalIssue = getIssueByChoice(issueChoice);
         generalIssue.provideHelp();
 
-        scanner.close();
+        ticket.setIssue(generalIssue.getDescription());
     }
 
-    public void displayGeneralIssues() {
+    private Issue getIssueByChoice(int issueChoice) {
         for (Issue issue : issues) {
-            System.out.println(issue.getId() + ". " + issue.getDescription());
-        }
-    }
-
-    public Issue getIssueByChoice(int issueChoice) {
-        for (Issue issue : issues) {
-            if (issue.getId() == issueChoice) {
-                return issue;
-            }
+            if (issue.getId() == issueChoice) return issue;
         }
         return null;
     }
