@@ -29,19 +29,23 @@ public class ProductService {
         gardenbeetleIssues.add(new Issue(3, "Gerät startet nicht", getGardenbeetleSolution(3)));
 
         ArrayList<String> cleanbugSpareparts = new ArrayList<>();
-        cleanbugSpareparts.add("Getriebe");
-        cleanbugSpareparts.add("Dichtung");
+        cleanbugSpareparts.add("Filter");
+        cleanbugSpareparts.add("Sensor");
+        cleanbugSpareparts.add("Bürsten");
         cleanbugSpareparts.add("Akku");
+        cleanbugSpareparts.add("Getriebe");
 
         ArrayList<String> windowflySpareparts = new ArrayList<>();
-        windowflySpareparts.add("Getriebe");
-        windowflySpareparts.add("Dichtung");
+        windowflySpareparts.add("Saugnäpfe");
+        windowflySpareparts.add("Fensterwischer-Modul");
         windowflySpareparts.add("Akku");
+        windowflySpareparts.add("Getriebe");
 
         ArrayList<String> gardenbeetleSpareparts = new ArrayList<>();
-        gardenbeetleSpareparts.add("Getriebe");
-        gardenbeetleSpareparts.add("Dichtung");
+        gardenbeetleSpareparts.add("Räder");
+        gardenbeetleSpareparts.add("Bürsten");
         gardenbeetleSpareparts.add("Akku");
+        gardenbeetleSpareparts.add("Getriebe");
 
 
         Product cleanbug = new Product(1, "Cleanbug", cleanbugIssues, cleanbugSpareparts);
@@ -94,16 +98,18 @@ public class ProductService {
         }
         return null;
     }
+
     private static String getCleanbugSolution(int issueId) {
         return switch (issueId) {
             case 1 -> " -> Überprüfen Sie, ob die Sensoren sauber sind und keine Verschmutzungen vorliegen.\n " +
                     "-> Stellen Sie sicher, dass die Software auf dem neuesten Stand ist.\n" +
                     "-> Passen Sie die Empfindlichkeit der Hinderniserkennung in den Einstellungen an.\n" +
                     "-> Entfernen oder markieren Sie kleine Hindernisse, die der Cleanbug nicht erkennt.";
-            case 2 -> "-> Stellen Sie sicher, dass der Akku geladen ist. Falls nicht, laden Sie ihn vollständig auf.\n" +
-                    "-> Überprüfen Sie, ob sich das Gerät in einem feuchten oder überhitzten Zustand befindet. Lassen Sie es ggf. abkühlen.\n" +
-                    "-> Halten Sie die Ein-/Aus-Taste mindestens 5 Sekunden lang gedrückt.\n" +
-                    "-> Prüfen Sie, ob die Sicherung oder das Netzteil defekt ist.";
+            case 2 ->
+                    "-> Stellen Sie sicher, dass der Akku geladen ist. Falls nicht, laden Sie ihn vollständig auf.\n" +
+                            "-> Überprüfen Sie, ob sich das Gerät in einem feuchten oder überhitzten Zustand befindet. Lassen Sie es ggf. abkühlen.\n" +
+                            "-> Halten Sie die Ein-/Aus-Taste mindestens 5 Sekunden lang gedrückt.\n" +
+                            "-> Prüfen Sie, ob die Sicherung oder das Netzteil defekt ist.";
             case 3 -> "-> Reinigen oder ersetzen Sie die Bürsten und Filter regelmäßig.\n" +
                     "-> Prüfen Sie, ob sich Schmutz in den Ansaugöffnungen befindet und entfernen Sie ihn.\n" +
                     "-> Passen Sie die Reinigungseinstellungen an (z. B. Erhöhung der Saugkraft).\n" +
@@ -118,10 +124,11 @@ public class ProductService {
                     "-> Reinigen Sie die Sensoren und die Glasoberfläche, um Haftprobleme zu vermeiden.\n" +
                     "-> Starten Sie das Gerät neu und versuchen Sie einen anderen Modus.\n" +
                     "-> Prüfen Sie die Akkuleistung – ein schwacher Akku kann zu Saugverlust führen.";
-            case 2 -> "-> Reinigen Sie die Saugnäpfe und das Fenster gründlich, um optimale Haftung zu gewährleisten.\n" +
-                    "-> Prüfen Sie, ob das Gerät für die Fenstertypen (z. B. Doppelglas) geeignet ist.\n" +
-                    "-> Achten Sie darauf, dass das Fenster trocken und nicht zu kalt ist.\n" +
-                    "-> Nutzen Sie das Sicherheitsseil als Schutzmaßnahme.";
+            case 2 ->
+                    "-> Reinigen Sie die Saugnäpfe und das Fenster gründlich, um optimale Haftung zu gewährleisten.\n" +
+                            "-> Prüfen Sie, ob das Gerät für die Fenstertypen (z. B. Doppelglas) geeignet ist.\n" +
+                            "-> Achten Sie darauf, dass das Fenster trocken und nicht zu kalt ist.\n" +
+                            "-> Nutzen Sie das Sicherheitsseil als Schutzmaßnahme.";
             case 3 -> "-> Laden Sie den Akku vollständig auf oder überprüfen Sie das Netzteil.\n" +
                     "-> Halten Sie die Ein-/Aus-Taste für mindestens 5 Sekunden gedrückt.\n" +
                     "-> Setzen Sie das Gerät zurück, indem Sie es vom Strom trennen und nach 10 Sekunden erneut einschalten.\n" +

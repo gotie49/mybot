@@ -24,7 +24,6 @@ public class TicketService {
             ticketMap.put("sparepart", ticket.getSparepart());
         }
         ticketMap.put("feedback", ticket.getFeedback());
-        System.out.println(ticketMap);
         JSONObject ticketJson = new JSONObject(ticketMap);
         saveTicketToFile(ticketJson, ticket.getCostumerID()); //how to ensure no duplicates?
     }
