@@ -52,7 +52,7 @@ public class GeneralService {
         ticket.setIssue(generalIssue.getDescription());
     }
 
-    private Issue getIssueByChoice(int issueChoice) {
+    public Issue getIssueByChoice(int issueChoice) {
         for (Issue issue : issues) {
             if (issue.getId() == issueChoice) return issue;
         }
