@@ -16,7 +16,8 @@ public class ChatService {
         ticket = Ticket.getInstance();
 
         System.out.println("Willkommen zum Support-Chatbot JAVANATHAN!");
-
+        UIEngine.waitForInput();
+       
         runCustomerID();
         runProductChoice();
         runProblemChoice();

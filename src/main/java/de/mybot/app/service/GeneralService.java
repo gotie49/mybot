@@ -33,6 +33,7 @@ public class GeneralService {
 
         Issue generalIssue = getIssueByChoice(issueChoice);
         generalIssue.provideHelp();
+        UIEngine.waitForInput();
 
         ticket.setIssue(generalIssue.getDescription());
     }

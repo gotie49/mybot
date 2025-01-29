@@ -6,10 +6,10 @@ public class Issue {
     private final String helpInstructions;
 
     //TODO: vermutlich brauchen wir hier als Eigenschaft die Hilfsanleitung
-    public Issue(int id, String description) {
+    public Issue(int id, String description, String helpInstructions) {
         this.id = id;
         this.description = description;
-        this.helpInstructions = "Not implemented yet";
+        this.helpInstructions = helpInstructions;
     }
 
     public int getId() {

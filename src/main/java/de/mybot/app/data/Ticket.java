@@ -13,6 +13,7 @@ public class Ticket {
     private static Ticket instance;
 
     private Ticket() {
+        //TODO: default values
         this.ticketStatus = "unresolved";
     }
 

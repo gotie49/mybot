@@ -78,7 +78,13 @@ public class UIEngine {
     }
 
     public static void clear() {
+        System.out.println("DEBUG: SCREEN CLEARED");
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    public static void waitForInput() {
+        System.out.println("DEBUG: WAITING FOR INPUT");
+        scanner.nextLine();
     }
 }
