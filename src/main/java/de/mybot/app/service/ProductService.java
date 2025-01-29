@@ -74,7 +74,6 @@ public class ProductService {
 
         Issue productIssue = getIssueByChoice(issueChoice);
         productIssue.provideHelp();
-        UIEngine.waitForInput();
 
         ticket.setIssue(productIssue.getDescription());
     }

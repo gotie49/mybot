@@ -6,7 +6,7 @@ It is written in plain Java without any framework and focuses and using OOP prin
 ### Setup Instructions
 1. **Prerequisites**:
     - Java Development Kit (JDK) 17 or higher.
-    - Apache Maven 3.9.6 or later installed.
+    - Apache Maven 3.9.9 or later installed.
 2. **Build and Run**:
-    - Build the project: `mvn clean install`
-    - Run the Project in the IDE I guess, TBD: implement mvn exec plugin
+    - Compile the project into an executable fat jar: `mvn clean package shade:shade`
+    - Run the jar: `java -jar my-bot-1.0-SNAPSHOT.jar`

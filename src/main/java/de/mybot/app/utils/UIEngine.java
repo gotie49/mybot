@@ -45,6 +45,7 @@ public class UIEngine {
             System.out.print("Eingabe: ");
         }
         String input = scanner.next();
+        scanner.nextLine(); //consume remaining buffer
         System.out.println();
         return input;
     }
