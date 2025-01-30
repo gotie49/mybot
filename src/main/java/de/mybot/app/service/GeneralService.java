@@ -36,14 +36,14 @@ public class GeneralService {
         ticket.setProblemType("Allgemein");
 
         UIEngine.clear();
-        UIEngine uiManager = new UIEngine("Allgemeine Probleme");
+        UIEngine generalMenu = new UIEngine("Allgemeine Probleme");
 
         ArrayList<String> generalOptions = new ArrayList<>();
         for (Issue issue : issues) {
             generalOptions.add(issue.getDescription());
         }
 
-        uiManager.drawMenu(generalOptions);
+        generalMenu.drawMenu(generalOptions);
         int issueChoice = UIEngine.getMenuInput(generalOptions.size());
 
         Issue generalIssue = getIssueByChoice(issueChoice);

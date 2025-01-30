@@ -12,6 +12,7 @@ public class UIEngine {
     }
 
     public void drawMenu(ArrayList<String> options) {
+        //find the biggest string within the options list 
         int maxLength = 0;
         for (String option : options) {
             int optionLength = option.length() + 3;
@@ -35,6 +36,7 @@ public class UIEngine {
             String firstOption = (i + 1) + ") " + options.get(i);
             // Create the second option string if it exists, otherwise an empty string
             String secondOption = (i + 2 <= options.size()) ? (i + 2) + ") " + options.get(i + 1) : "";
+
             // Print the two options with formatted output, aligning the second column
             System.out.printf("%-" + maxLength + "s %s%n", firstOption, secondOption);
         }

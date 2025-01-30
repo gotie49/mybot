@@ -23,6 +23,7 @@ public class Issue {
 
     public void provideHelp() {
         UIEngine.clear();
+        System.out.println("------------------------------ Hilfsanleitung --------------------------------");
         System.out.println(helpInstructions);
         UIEngine.waitForInput();
     }

@@ -7,13 +7,18 @@ public class App {
         ChatService chatService = new ChatService();
         chatService.startChat();
         /* TODO: Bug testen, Chatanweisungen überarbeiten/überprüfen, 
-               Pseudo Code, Vergleich mit Mitbewerben(IKEA-Bot,H&M Chatbot), 
+               Vergleich mit Mitbewerben(IKEA-Bot,H&M Chatbot), 
                Manual/Aktivitätsdiagramm/USE-Case Diagramm besprechen, Fachgespräch planen */
-        /* Aufgabenverteilung: Esli:  Pseudocode
+        /* Aufgabenverteilung: Esli:  
                                Gerrit: Bug fixen, Programm überprüfen/verbessern
                                Jonathan: Bug fixen */
-        /* Fachgespräch (nur erste Idee): Vorstellen des Aktivitätsdiagramm, USE-Case Diagramm, 
-                                Zeigen des Programms (-> gefolgt von Zeigen der Tickets), Integrationsmöglichkeiten,
-                                Zeigen des Codes (-> gefolgt von Zeigen der Unit-Tests), Pseudocode, Vergleich mit Mitbewerbern */
+        /* Fachgespräch: 1. Manual 2. Aktivitätsdiagramm, 3. USE-Case Diagramm, 
+        4. Programm zeigen  
+            1. Hauptablauf   
+            2. UIEngine -> gefolgt von PseudoCode
+        5. Ticket zeigen
+            2.
+            
+         */
     }
 }

@@ -34,7 +34,7 @@ public class TicketService {
         try {
             Files.createDirectories(folderPath);
         } catch (IOException e) {
-            System.err.println("Ticket Ordner konnte nicht erstell werden.");
+            System.err.println("Ticket Ordner konnte nicht erstellt werden.");
             e.printStackTrace();
             return;
         }

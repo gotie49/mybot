@@ -1,7 +1,6 @@
 package de.mybot.app.service;
 
 import java.util.ArrayList;
-import java.util.List;
 import de.mybot.app.data.Issue;
 import de.mybot.app.data.Product;
 import de.mybot.app.data.Ticket;
@@ -62,14 +61,14 @@ public class ProductService {
         ticket.setProblemType("Produktspezifisch");
 
         UIEngine.clear();
-        UIEngine uiManager = new UIEngine("Produktspezifische Probleme für " + selectedProduct.getName());
+        UIEngine productMenu = new UIEngine("Produktspezifische Probleme für " + selectedProduct.getName());
 
         ArrayList<String> issueOptions = new ArrayList<>();
         for (Issue issue : selectedProduct.getProductIssues()) {
             issueOptions.add(issue.getDescription());
         }
 
-        uiManager.drawMenu(issueOptions);
+        productMenu.drawMenu(issueOptions);
         int issueChoice = UIEngine.getMenuInput(issueOptions.size());
 
         Issue productIssue = getIssueByChoice(issueChoice);
@@ -79,14 +78,14 @@ public class ProductService {
     }
 
     private Issue getIssueByChoice(int issueChoice) {
-        List<Issue> issueList = selectedProduct.getProductIssues();
+        ArrayList<Issue> issueList = selectedProduct.getProductIssues();
         for (Issue issue : issueList) {
             if (issue.getId() == issueChoice) return issue;
         }
         return null;
     }
 
-    public List<Product> getProducts() {
+    public ArrayList<Product> getProducts() {
         return products;
     }
 
