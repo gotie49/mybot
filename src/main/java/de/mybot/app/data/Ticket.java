@@ -1,5 +1,8 @@
 package de.mybot.app.data;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Ticket {
     private String costumerID;
     private String ticketStatus;
@@ -86,5 +89,11 @@ public class Ticket {
 
     public int getFeedback() {
         return feedback;
+    }
+    public String getTimeStamp() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = now.format(formatter);
+        return formattedDateTime;
     }
 }
