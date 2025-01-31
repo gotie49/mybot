@@ -104,6 +104,7 @@ public class ChatService {
                     " Bitte kontaktieren Sie den Service Mitarbeiter unter folgender Telefonnummer: 0800042069");
             ticket.setTicketStatus("unresolved");
         }
+        UIEngine.waitForInput();
     }
 
     private void runFeedback() {
@@ -113,7 +114,7 @@ public class ChatService {
         ticket.setFeedback(feedback);
 
         System.out.println("Danke für Ihr Feedback! " +
-                "Einen schönen Tag wünsche wir von der Bugland Company");
+                "Einen schönen Tag wünsche wir von der Bugland Company.");
     }
 }
 
