@@ -3,34 +3,26 @@ package de.mybot.app;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
-import de.mybot.app.data.Issue;
 import de.mybot.app.data.Product;
 import de.mybot.app.data.Ticket;
 import de.mybot.app.service.ProductService;
 
 public class DataTest {
     private final ProductService productService = new ProductService();
+    private final ArrayList<Product> products = productService.getProducts();
 
     @Test
     void testIssueData() {
-        assertEquals(productService.getProducts().get(1).getProductIssues().get(1).getDescription(), "Absturz bei Hindernissen");
-        assertEquals(productService.getProducts().get(1).getProductIssues().get(1).getId(), "1");
+        assertEquals(products.get(1).getProductIssues().get(1).getDescription(), "Gerät rutscht ab");
+        assertEquals(products.get(1).getProductIssues().get(1).getId(), 2);
     }
 
     @Test
     void testProduktData() {
-        ArrayList<Product> products = productService.getProducts();
-
-        ArrayList<Issue> testIssue = new ArrayList<>();
-        testIssue.add(new Issue(1, "Hallo", "Gerrit ist doof"));
-        ArrayList<String> testArray = new ArrayList<>();
-        testArray.add("Räder");
-        Product product = new Product(1, "HAHA", testIssue, testArray);
-
-        assertEquals(products.get(2).getId(), 2);
-        assertEquals(products.get(2).getName(), "Windowfly");
-        assertEquals(product.getProductIssues(), testIssue);
-        assertEquals(product.getSpareparts(), testArray);
+        assertEquals(products.get(2).getId(), 3);
+        assertEquals(products.get(2).getName(), "Gardenbeetle");
+        assertEquals(products.get(1).getProductIssues().get(1).getDescription(), "Gerät rutscht ab");
+        assertEquals(products.get(2).getSpareparts().get(1), "Bürsten");
     }
 
     @Test
