@@ -115,6 +115,7 @@ public class ChatService {
 
         System.out.println("Danke für Ihr Feedback! " +
                 "Einen schönen Tag wünsche wir von der Bugland Company.");
+        UIEngine.waitForInput();
     }
 }
 

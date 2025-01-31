@@ -46,7 +46,6 @@ public class ProductService {
         gardenbeetleSpareparts.add("Akku");
         gardenbeetleSpareparts.add("Getriebe");
 
-
         Product cleanbug = new Product(1, "Cleanbug", cleanbugIssues, cleanbugSpareparts);
         Product windowfly = new Product(2, "Windowfly", windowflyIssues, windowflySpareparts);
         Product gardenbeetle = new Product(3, "Gardenbeetle", gardenbeetleIssues, gardenbeetleSpareparts);
