@@ -56,7 +56,7 @@ public class UIEngine {
         String response = fetchUserInput(true);
         try {
             int input = Integer.parseInt(response);
-            if (input > menuSize || input < menuSize) {
+            if (input > menuSize || input < 1) {
                 System.out.println("Ungültige Eingabe: Die Zahl ist größer/kleiner als die Anzahl an Menüoptionen, Eingabe: " + input);
                 return getMenuInput(menuSize);
             }
