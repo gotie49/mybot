@@ -99,7 +99,7 @@ public class ProductService {
 
     private static String getCleanbugSolution(int issueId) {
         return switch (issueId) {
-            case 1 -> " -> Überprüfen Sie, ob die Sensoren sauber sind und keine Verschmutzungen vorliegen.\n " +
+            case 1 -> "-> Überprüfen Sie, ob die Sensoren sauber sind und keine Verschmutzungen vorliegen.\n " +
                     "-> Stellen Sie sicher, dass die Software auf dem neuesten Stand ist.\n" +
                     "-> Passen Sie die Empfindlichkeit der Hinderniserkennung in den Einstellungen an.\n" +
                     "-> Entfernen oder markieren Sie kleine Hindernisse, die der Cleanbug nicht erkennt.";

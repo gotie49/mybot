@@ -11,16 +11,16 @@ public class GeneralService {
 
     public GeneralService() {
         issues.add(new Issue(1, "Verbindungsprobleme",
-                "1. Gerät und Router neustarten.\n" +
-                        "2. Sicherstellen, dass das WLAN-Signal stark genug ist.\n" +
-                        "3. Gerät in den Netzwerkeinstellungen zurücksetzen und erneut verbinden.\n"));
+                "-> Gerät und Router neustarten.\n" +
+                        "-> Sicherstellen, dass das WLAN-Signal stark genug ist.\n" +
+                        "-> Gerät in den Netzwerkeinstellungen zurücksetzen und erneut verbinden.\n"));
         issues.add(new Issue(2, "App-/Softwarefehler",
-                "1. App neustarten und auf Updates prüfen.\n" +
-                        "2. Gerät neustarten und erneut koppeln.\n" +
-                        "3. App neu installieren, falls das Problem weiterhin besteht.\n"));
+                "-> App neustarten und auf Updates prüfen.\n" +
+                        "-> Gerät neustarten und erneut koppeln.\n" +
+                        "-> App neu installieren, falls das Problem weiterhin besteht.\n"));
         issues.add(new Issue(3, "Einrichtung/Erstinstallation",
-                "1. Anleitung aus der Verpackung befolgen.\n" +
-                        "2. Gerät mit der App verbinden und Kalibrierung durchführen.\n"));
+                "-> Anleitung aus der Verpackung befolgen.\n" +
+                        "-> Gerät mit der App verbinden und Kalibrierung durchführen.\n"));
 
         issues.add(new Issue(4, "Ersatzteile/Bestellung",
                 "Ersatzteile können produktspezifisch bestellt werden.\n" +
